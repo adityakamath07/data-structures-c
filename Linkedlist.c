@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "LL.h"
+#include "Linkedlist.h"
 
 void init_list(node_t **head){
 	*head=NULL;
@@ -9,8 +9,7 @@ void init_list(node_t **head){
 node_t *createNode(double data){
 	node_t *new=malloc(sizeof(node_t));
 	if(new==NULL){
-		printf("Memory allocation failed(Space...)");
-		free(new);
+		printf("Memory allocation failed");
 		return new;
 	}
 	new->key=data;
@@ -87,41 +86,26 @@ double del(node_t **head,char *ch){
 	}
 }
 
-node_t *order(node_t *head,char *ch){
-	if(*ch=='A'||*ch=='a'){
-		node_t *temp=head; 
-		node_t *prev=temp;
-		if(temp->next==NULL)return head;
-		while(temp!=NULL){
-			temp=temp->next;
-			if(temp->key<prev->key){
-				prev->next=temp->next;
-				temp->next=prev;
-				if(temp==head)head=prev;
-			}
-			prev=prev->next;
-		}
-		return head;
-	}
-	if(*ch=='D'||*ch=='d'){
-		node_t *temp=head;
-		node_t *prev=temp;
-		if(temp->next==NULL)return head;
-		while(temp!=NULL){
-			temp=temp->next;
-			if(temp->key>prev->key){
-				prev->next=temp->next;
-				temp->next=prev;
-				if(temp==head)head=prev;
-			}
-			prev=prev->next;
-		}
-		return head;
-	}
-	else{
-		printf("I dont understand your choice so i just return the original list lol.");
-		return head;
-	}
+void order(node_t *head, char *ch){
+    if(head == NULL || head->next == NULL)return;
+    if(*ch != 'A' && *ch != 'a' && *ch != 'D' && *ch != 'd'){
+        printf("I dont understand your choice so i just return the original list lol.");
+        return;
+    }
+    for(node_t *i = head; i != NULL; i = i->next){
+        for(node_t *j = i->next; j != NULL; j = j->next){
+            if((*ch == 'A' || *ch == 'a') && i->key > j->key){
+                double temp = i->key;
+                i->key = j->key;
+                j->key = temp;
+            }
+            if((*ch == 'D' || *ch == 'd') && i->key < j->key){
+                double temp = i->key;
+                i->key = j->key;
+                j->key = temp;
+            }
+        }
+    }
 }
 
 void display(node_t *head){
