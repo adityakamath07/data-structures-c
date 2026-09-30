@@ -44,7 +44,7 @@ void display(stack_t *s){
 	}
 	node_t *temp=s->top;
 	while(temp!=NULL){
-  		printf("%lf ",temp->key);
+  		printf("%d ",temp->key);
 		temp=temp->next;
 	}
 }

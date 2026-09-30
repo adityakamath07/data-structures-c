@@ -62,7 +62,7 @@ void display(queue_t *q){
 	if(q==NULL)return;
 	node_t *temp=q->front;
 	while(temp!=NULL){
-		printf("%lf ",temp->key);
+		printf("%d ",temp->key);
 		temp=temp->next;
 	}
 }
