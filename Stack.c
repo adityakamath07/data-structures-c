@@ -56,7 +56,6 @@ void deinit_stack(stack_t *s){
 		pop(s);
 		temp=s->top;
 	}
-	free(temp);
 }
 
 

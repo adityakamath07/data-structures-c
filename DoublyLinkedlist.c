@@ -23,6 +23,11 @@ node_t *insert(node_t *head,double data,int pos){
 		new->prev=NULL;
 		return new;
 	}
+    if(pos<1){
+        printf("Invalid position.Insertion not succesfull.");
+        free(new);
+        return head;
+    }
 	if(pos==1){
 		head->prev=new;
 		new->next=head;

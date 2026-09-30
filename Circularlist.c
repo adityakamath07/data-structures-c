@@ -25,6 +25,10 @@ node_t *insert(node_t *head, double data, int pos){
         new->next = new;
         return new;
     }
+    if(pos<1){
+        printf("Invalid position");
+        return head;
+    }
     if(pos == 1){
         node_t *last = head;
         while(last->next != head)

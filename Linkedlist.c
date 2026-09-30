@@ -20,6 +20,11 @@ node_t *createNode(double data){
 node_t *insert(node_t *head,double data,int pos){
 	if(head==NULL) return createNode(data);
 	node_t *new=createNode(data);
+    if(pos<1){
+        printf("Invalid position");
+        free(new);
+        return head;
+    }
 	if(pos==1){
 		new->next=head;
 		return new;
