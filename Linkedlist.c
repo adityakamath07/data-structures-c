@@ -87,10 +87,10 @@ double del(node_t **head,char *ch){
 }
 
 node_t *order(node_t *head, char *ch){
-    if(head == NULL || head->next == NULL)return NULL;
+    if(head == NULL || head->next == NULL)return head;
     if(*ch != 'A' && *ch != 'a' && *ch != 'D' && *ch != 'd'){
         printf("I dont understand your choice so i just return the original list lol.");
-        return NULL;
+        return head;
     }
     for(node_t *i = head; i != NULL; i = i->next){
         for(node_t *j = i->next; j != NULL; j = j->next){
