@@ -128,13 +128,13 @@ double del(node_t **head, char *ch){
     return 0.0;
 }
 
-void order(node_t *head, char *ch){
+node_t* order(node_t *head, char *ch){
     if(head == NULL || head->next == head)
-        return;
+        return head;
     if(*ch != 'A' && *ch != 'a' &&
        *ch != 'D' && *ch != 'd'){
         printf("I don't understand your choice so I just return the original list lol.");
-        return;
+        return head;
     }
     for(node_t *i = head; i->next != head; i = i->next){
         for(node_t *j = i->next; j != head; j = j->next){
@@ -150,6 +150,7 @@ void order(node_t *head, char *ch){
             }
         }
     }
+    return head;
 }
 void display(node_t *head){
     if(head == NULL){
@@ -174,6 +175,5 @@ void deinit_list(node_t **head){
         temp = next;
     }
     free(temp);
-    free(*head);
     *head = NULL;
 }

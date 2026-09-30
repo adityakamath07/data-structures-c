@@ -2,7 +2,7 @@
 #define DLL_H
 
 typedef struct Node{
-	int key;
+	double key;
 	struct Node *prev;
 	struct Node *next;
 }node_t;

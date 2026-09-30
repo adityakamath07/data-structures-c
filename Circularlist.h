@@ -2,7 +2,7 @@
 #define CL_H
 
 typedef struct Node{
-	int key;
+    double key;
 	struct Node *next;
 }node_t;
 
@@ -12,6 +12,6 @@ node_t *insert(node_t *head,double data,int pos);
 double del(node_t **head,char *ch);
 node_t *order(node_t *head,char *ch);
 void display(node_t *head);
-void deinit_list(node_t *head);
+void deinit_list(node_t **head);
 
 #endif

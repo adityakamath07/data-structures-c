@@ -3,7 +3,7 @@
 
 typedef struct node{
 	double key;
-	struct Node *next;
+	struct node *next;
 }node_t;
 
 void init_list(node_t **head);

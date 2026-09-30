@@ -2,7 +2,7 @@
 #define Q_H
 
 typedef struct Node{
-	int key;
+	double key;
 	struct Node *next;
 }node_t;
 
