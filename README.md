@@ -1,122 +1,153 @@
-Multiple header files cannot be used in the same file since all have the same node_t. I did that purposefully since students must not be lazy like me ;). 
+Multiple header files cannot be used in the same file since all have the same node_t. I did that purposefully since students must not be lazy like me ;). Well the readme file is vibe coded if not for the actual code.
 
 # Data Structures in C
 
-Basic data structure implementations in C.
+Basic data structure implementations in C for learning and coursework.
 
 ## Header Files
 
 ### `Linkedlist.h`
 
-For implementing a **singly linked list**.
-
-Functions:
+Singly linked list.
 
 ```c
-node_t *init_list();
+void init_list(node_t **head);
+node_t *createNode(double data);
 node_t *insert(node_t *head, double data, int pos);
-node_t *del(node_t *head, int pos);
+double del(node_t **head, char *ch);
+node_t *order(node_t *head, char *ch);
 void display(node_t *head);
-void deinit_list(node_t **head);
+void deinit_list(node_t *head);
 ```
 
-* `init_list()` — creates/initializes an empty list.
-* `insert()` — inserts a value at the given position.
-* `del()` — deletes the node at the given position.
+* `init_list()` — initializes the list.
+* `createNode()` — creates a new node.
+* `insert()` — inserts a node at a given position.
+* `del()` — deletes a node.
+* `order()` — sorts the list.
 * `display()` — displays the list.
-* `deinit_list()` — frees the entire list.
-
----
+* `deinit_list()` — frees the list.
 
 ### `DoublyLinkedlist.h`
 
-For implementing a **doubly linked list**.
-
-Functions:
+Doubly linked list.
 
 ```c
-node_t *init_list();
+void init_list(node_t **head);
+node_t *createNode(double data);
 node_t *insert(node_t *head, double data, int pos);
-node_t *del(node_t *head, int pos);
+double del(node_t **head, char *ch);
+node_t *order(node_t *head, char *ch);
 void display(node_t *head);
-void deinit_list(node_t **head);
+void deinit_list(node_t *head);
 ```
 
-* `init_list()` — initializes an empty list.
-* `insert()` — inserts a value at the given position.
-* `del()` — deletes the node at the given position.
-* `display()` — displays the list.
-* `deinit_list()` — frees the entire list.
-
----
+Same operations as the singly linked list, with nodes containing both `next` and `prev` pointers.
 
 ### `Circularlist.h`
 
-For implementing a **circular linked list**.
-
-Functions:
+Circular linked list.
 
 ```c
-node_t *init_list();
+void init_list(node_t **head);
+node_t *createNode(double data);
 node_t *insert(node_t *head, double data, int pos);
-node_t *del(node_t *head, int pos);
+double del(node_t **head, char *ch);
+node_t *order(node_t *head, char *ch);
 void display(node_t *head);
 void deinit_list(node_t **head);
 ```
 
-* `init_list()` — initializes an empty list.
-* `insert()` — inserts a value at the given position.
-* `del()` — deletes the node at the given position.
-* `display()` — traverses and displays the circular list.
-* `deinit_list()` — frees the entire list.
-
----
+The last node points back to the first node.
 
 ### `Stack.h`
 
-For implementing a **stack using a linked list**.
-
-Functions:
+Stack implemented using a linked list.
 
 ```c
-stack_t *init_stack();
-void push(stack_t *s, double data);
-double pop(stack_t *s);
-double peek(stack_t *s);
-void deinit_stack(stack_t **s);
+void init_stack(stack_t *s);
+void push(stack_t *s, int l);
+int pop(stack_t *s);
+int peek(stack_t *s);
+void display(stack_t *s);
+void deinit_stack(stack_t *s);
 ```
 
-* `init_stack()` — creates an empty stack.
 * `push()` — adds an element to the top.
 * `pop()` — removes and returns the top element.
 * `peek()` — returns the top element without removing it.
-* `deinit_stack()` — frees the stack.
-
----
+* `display()` — displays the stack.
 
 ### `Queue.h`
 
-For implementing a **queue using a linked list**.
-
-Functions:
+Queue implemented using a linked list.
 
 ```c
-queue_t *init_queue();
-void enqueue(queue_t *q, double data);
-double dequeue(queue_t *q);
-double peek(queue_t *q);
-void deinit_queue(queue_t **q);
+void init(queue_t *p);
+void enqueue(queue_t *p, int l);
+int dequeue(queue_t *p);
+int peek(queue_t *p);
+int is_empty(queue_t *p);
+int is_full(queue_t *p);
+void display(queue_t *p);
+void deinit(queue_t *p);
 ```
 
-* `init_queue()` — creates an empty queue.
 * `enqueue()` — adds an element to the rear.
 * `dequeue()` — removes and returns the front element.
-* `peek()` — returns the front element without removing it.
-* `deinit_queue()` — frees the queue.
+* `peek()` — returns the front element.
+* `is_empty()` — checks whether the queue is empty.
+* `is_full()` — checks whether another node can currently be allocated.
+* `display()` — displays the queue.
+
+### `Priority_Queue.h`
+
+Priority queue implemented using a linked list.
+
+```c
+void init(pq_t *q);
+void enqueue(pq_t *q, int a, int p);
+int dequeue(pq_t *q);
+int peek(pq_t *q);
+int is_empty(pq_t *q);
+int is_full(pq_t *q);
+void display(pq_t *q);
+void deinit(pq_t *q);
+```
+
+* `enqueue()` — inserts an element according to its priority.
+* `dequeue()` — removes and returns the highest-priority element.
+* `peek()` — returns the highest-priority element without removing it.
+* `is_empty()` — checks whether the queue is empty.
+* `is_full()` — checks whether another node can currently be allocated.
+* `display()` — displays the priority queue.
+
+**Priority convention:** a smaller priority value means higher priority.
+
+For example:
+
+```text
+1 → highest priority
+2
+3
+4 → lowest priority
+```
+
+## Things You Should Not Do
+
+* Do not use an invalid position such as `pos <= 0` when inserting into a linked list.
+* Do not use a node after it has been deleted or freed.
+* Do not access `head`, `front`, `rear`, or `top` without ensuring the structure is initialized.
+* Do not manually modify `next`/`prev` pointers unless you understand how the links are affected.
+* Do not call `dequeue()` or `pop()` on an empty structure.
+* Do not call `peek()` on an empty structure without handling its return value appropriately.
+* Do not free the same node more than once.
+* Do not include multiple headers that define conflicting types/functions in the same source file.
+* Do not change the priority convention in `Priority_Queue` without also changing its insertion logic.
 
 ## Requirements
 
-A C compiler such as **GCC** is required.
+A C compiler such as GCC is required.
 
 Example:
 
@@ -127,6 +158,4 @@ gcc program.c -o program
 
 ## Note
 
-These implementations are primarily for **learning and coursework purposes**. They may be modified or improved as I continue learning C and data structures.
-
-Each data structure has its own header file and implementation file. Avoid including multiple headers that define the same type name (such as `node_t`) in the same source file.
+These implementations are primarily for learning and coursework purposes. They may be modified and improved as I continue learning C and data structures.
