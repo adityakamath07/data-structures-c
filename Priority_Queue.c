@@ -20,6 +20,22 @@ void enqueue(pq_t *q,int a,int p){
 		q->front=q->rear=new;
 		return;
 	}
+    if(new->priority<q->front->priority){
+        new->next=q->front;
+        q->front=new;
+        return;
+    }
+    node_t *temp=q->front->next;
+    node_t *prev=q->front;
+    while(temp!=NULL){
+        if(new->priority<temp->priority){
+            new->next=temp;
+            prev->next=new;
+            return;
+        }
+        prev=prev->next;
+        temp=temp->next;
+    }
 	q->rear->next=new;
 	q->rear=new;
 }
